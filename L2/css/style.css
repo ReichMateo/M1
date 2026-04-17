@@ -1,0 +1,159 @@
+﻿/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+:root {
+  --color-primario: hsl(214, 88%, 55%);
+  --color-primario-claro: hsl(214, 88%, 72%);
+  --color-primario-oscuro: hsl(214, 88%, 35%);
+  --text-color: hsl(218, 14%, 16%);
+  --bg-color: hsl(210, 35%, 98%);
+  --surface: hsl(0, 0%, 100%);
+  --muted: hsl(214, 11%, 52%);
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+}
+
+/*
+ * INVESTIGACIÓN: ¿Qué es HSL y por qué usarlo?
+ *
+ * 1. ¿Qué significa cada valor en hsl()?
+ *    - H (Hue): color base en grados alrededor del círculo cromático.
+ *    - S (Saturation): intensidad del color; 0% es gris y 100% es color más puro.
+ *    - L (Lightness): brillo o oscuridad; 0% es negro y 100% es blanco.
+ *
+ * 2. ¿Por qué HSL puede ser más útil que HEX o RGB?
+ *    - Permite ajustar rápidamente tonos y variantes cambiando solo la luminosidad.
+ *    - Es más fácil crear paletas armoniosas y mantener consistencia visual.
+ *
+ * 3. Ejemplo práctico: ¿Cuándo usarías HSL en un proyecto real?
+ *    - Para definir variables de tema y generar versiones claras/oscuras del mismo color.
+ */
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-primario);
+  padding: 2rem 1rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(20, 30, 60, 0.12);
+}
+
+.header-contenido {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+  text-align: center;
+}
+
+.titulo-principal {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  margin-bottom: 0.75rem;
+  color: var(--surface);
+}
+
+.descripcion {
+  font-size: 1.05rem;
+  color: hsla(0, 0%, 100%, 0.9);
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.foto-tarjeta {
+  background-color: var(--surface);
+  border-radius: 1rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(20, 30, 60, 0.08);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.foto-tarjeta img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.foto-info {
+  padding: 1rem;
+}
+
+.foto-titulo {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primario-oscuro);
+}
+
+.foto-descripcion {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.foto-tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1.25rem 2rem rgba(20, 30, 60, 0.16);
+}
+
+.footer {
+  background-color: var(--color-primario-oscuro);
+  color: var(--surface);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .galeria {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .titulo-principal {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+
+  .titulo-principal {
+    font-size: 2rem;
+  }
+
+  .contenedor {
+    padding: 1rem;
+  }
+}
